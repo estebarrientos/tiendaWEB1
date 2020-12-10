@@ -22,7 +22,7 @@
 
         if($transaccion){
             header("location:registrarProductos.php")
-        }
+        };
 
     }
 

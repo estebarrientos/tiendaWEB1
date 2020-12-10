@@ -8,7 +8,7 @@
     <title>Wallie Toys</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 
@@ -42,12 +42,12 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="formularioProductos.php">Inicio
-                                    
+                            <a class="nav-link" href="index.php">Inicio
+
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Editar Productos</a>
+                            <a class="nav-link" href="formularioProductos.php">Registrar/ingresar Productos</a>
                         </li>
 
                     </ul>
@@ -57,7 +57,7 @@
     </header>
 
 
-    <div class="container">
+    <div class="container bgi">
         <div class="row">
             <div class="col-lg-3">
                 <h1 class="my-4">Wallie Toys</h1>
@@ -70,35 +70,36 @@
 
 
             <div class="col-lg-9">
-
-                <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                     <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
+                        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
+                        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
                     </ol>
-                    <div class="carousel-inner" role="listbox">
+                    <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img class="d-block img-fluid" src="https://i.ibb.co/0YwNppf/Cry-Babies-Lea.jpg"
-                                alt="Cry Lea">
+                            <img src="https://i.ibb.co/0YwNppf/Cry-Babies-Lea.jpg" class="d-block img-fluid  " alt="LEA">
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block img-fluid" src="https://i.ibb.co/ct7DbmT/Dreamy.jpg" alt="Dreamy">
+                            <img src="https://i.ibb.co/m50pTBY/Mochila-Cry-Babies.jpg" class="d-block img-fluid " alt="MOCHILA">
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block img-fluid" src="https://i.ibb.co/P9GrM2S/Mochila-Toy-Story.jpg"
-                                alt="Toy Story">
+                            <img src="https://i.ibb.co/fQPDRJw/Katie.jpg" class="d-block img-fluid " alt="KATIE">
                         </div>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                        data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
+                        <span class="visually-hidden">Previous</span>
                     </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                        data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
+                        <span class="visually-hidden">Next</span>
                     </a>
                 </div>
+
+
 
                 <div class="row">
                     <?php foreach($productos as $producto): ?>
@@ -106,25 +107,25 @@
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card h-100">
                             <img class="card-img-top" src="<?php echo($producto["foto"])?>"
-                                    alt="<?php echo($producto["nombre"])?>">
+                                alt="<?php echo($producto["nombre"])?>">
                             <div class="card-body">
                                 <h4 class="card-title">
                                     <?php echo($producto["nombre"])?>
                                 </h4>
                                 <h5>$<?php echo($producto["precio"])?></h5>
                                 <p class="card-text"><?php echo($producto["descripcion"])?></p>
-                                
+
                             </div>
                             <a href="eliminarProductos.php?id=<?= ($producto["id_producto"])?>"
-                                class="btn btn-danger">Eliminar</a>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                class="btn btn-warning">Eliminar</a>
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal"
                                 data-bs-target="#editar<?php echo($producto["id_producto"])?>">
                                 Editar
                             </button>
 
                             <!-- Modal -->
-                            <div class="modal fade" id="editar<?php echo($producto["id_producto"])?>"     tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
+                            <div class="modal fade" id="editar<?php echo($producto["id_producto"])?>" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -133,24 +134,29 @@
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="editarProductos.php?id=<?php echo($producto["id_producto"]) ?>" method="POST">
+                                            <form
+                                                action="editarProductos.php?id=<?php echo($producto["id_producto"]) ?>"
+                                                method="POST">
                                                 <div class="mb-3">
                                                     <label>Nombre de Producto</label>
-                                                    <input type="text" class="form-control"name="nombreEditar" value="<?php echo($producto["nombre"])?>">
+                                                    <input type="text" class="form-control" name="nombreEditar"
+                                                        value="<?php echo($producto["nombre"])?>">
 
                                                 </div>
                                                 <div class="mb-3">
                                                     <label>Precio:</label>
-                                                    <input type="number" class="form-control"name="precioEditar" value="<?php echo($producto["precio"])?>">
+                                                    <input type="number" class="form-control" name="precioEditar"
+                                                        value="<?php echo($producto["precio"])?>">
 
                                                 </div>
                                                 <div class="mb-3">
                                                     <label>Descripción:</label>
-                                                    <textarea class="form-control"name="descripcionEditar" rows="3">
+                                                    <textarea class="form-control" name="descripcionEditar" rows="3">
                                                     <?php echo($producto["descripcion"])?>
                                                     </textarea>
                                                 </div>
-                                                <button type="submit" class="btn btn-primary" name="botonEditar">Guardar</button>
+                                                <button type="submit" class="btn btn-primary"
+                                                    name="botonEditar">Guardar</button>
                                             </form>
                                         </div>
 
@@ -162,7 +168,7 @@
 
                     </div>
                     <?php endforeach ?>
-                </div>
+                
             </div>
 
 
@@ -180,7 +186,8 @@
 
     <footer class="py-5 bg-dark">
         <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+            <p class="m-0 text-center text-white">Copyright &copy; Esteban Barrientos Aguirre</p>
+            <p class="m-0 text-center text-white">Medellín, Colombia 2020</p>
         </div>
 
     </footer>
