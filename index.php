@@ -15,9 +15,7 @@
 <body>
     <?php
     
-    //rutina para consultar todos los datos de una tabla
-
-    //1. Incluir el archivo BaseDatos.php (Para pdoer usar la clase)
+      //1. Incluir el archivo BaseDatos.php (Para pdoer usar la clase)
     include("BaseDatos.php");
 
     //2. Crear un objeto de la clase BaseDatos
@@ -44,8 +42,8 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Inicio
-                                <span class="sr-only">(current)</span>
+                            <a class="nav-link" href="formularioProductos.php">Inicio
+                                    
                             </a>
                         </li>
                         <li class="nav-item">
@@ -66,7 +64,7 @@
                 <img src="https://i.ibb.co/VV4zj2m/Logo.jpg" alt="Logo Wallie" class="img-fluid img-thumbnail">
                 <div class="list-group">
                     <a href="index.php" class="list-group-item">Listado Productos</a>
-                    <a href="#" class="list-group-item">Registro Productos</a>
+                    <a href="formularioProductos.php" class="list-group-item">Registro Productos</a>
                 </div>
             </div>
 
@@ -107,28 +105,25 @@
 
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card h-100">
-                            <a href="#"><img class="card-img-top" src="<?php echo($producto["foto"])?>"
-                                    alt="<?php echo($producto["nombre"])?>"></a>
+                            <img class="card-img-top" src="<?php echo($producto["foto"])?>"
+                                    alt="<?php echo($producto["nombre"])?>">
                             <div class="card-body">
                                 <h4 class="card-title">
-                                    <a href="#"><?php echo($producto["nombre"])?></a>
+                                    <?php echo($producto["nombre"])?>
                                 </h4>
                                 <h5>$<?php echo($producto["precio"])?></h5>
                                 <p class="card-text"><?php echo($producto["descripcion"])?></p>
-                                <button type="button" class="btn btn-warning" data-toggle="modal"
-                                    data-target="#editar<?php echo($producto["id_producto"])?>">
-                                    Editar
-                                </button>
+                                
                             </div>
-                            <a href="eliminarProducto.php?id=<?= ($producto["id_producto"])?>"
+                            <a href="eliminarProductos.php?id=<?= ($producto["id_producto"])?>"
                                 class="btn btn-danger">Eliminar</a>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal">
-                                Launch demo modal
+                                data-bs-target="#editar<?php echo($producto["id_producto"])?>">
+                                Editar
                             </button>
 
                             <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            <div class="modal fade" id="editar<?php echo($producto["id_producto"])?>"     tabindex="-1" aria-labelledby="exampleModalLabel"
                                 aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -138,33 +133,24 @@
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form>
+                                            <form action="editarProductos.php?id=<?php echo($producto["id_producto"]) ?>" method="POST">
                                                 <div class="mb-3">
-                                                    <label >Nombre de Producto</label>
-                                                    <input type="text" class="form-control" id="nombreEditar"
-                                                        aria-describedby="emailHelp">
-                                                    
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="exampleInputEmail1" class="form-label">Email
-                                                        address</label>
-                                                    <input type="email" class="form-control" id="exampleInputEmail1"
-                                                        aria-describedby="emailHelp">
-                                                    <div id="emailHelp" class="form-text">We'll never share your email
-                                                        with anyone else.</div>
+                                                    <label>Nombre de Producto</label>
+                                                    <input type="text" class="form-control"name="nombreEditar" value="<?php echo($producto["nombre"])?>">
+
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="exampleInputPassword1"
-                                                        class="form-label">Password</label>
-                                                    <input type="password" class="form-control"
-                                                        id="exampleInputPassword1">
+                                                    <label>Precio:</label>
+                                                    <input type="number" class="form-control"name="precioEditar" value="<?php echo($producto["precio"])?>">
+
                                                 </div>
-                                                <div class="mb-3 form-check">
-                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                                    <label class="form-check-label" for="exampleCheck1">Check me
-                                                        out</label>
+                                                <div class="mb-3">
+                                                    <label>Descripción:</label>
+                                                    <textarea class="form-control"name="descripcionEditar" rows="3">
+                                                    <?php echo($producto["descripcion"])?>
+                                                    </textarea>
                                                 </div>
-                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                <button type="submit" class="btn btn-primary" name="botonEditar">Guardar</button>
                                             </form>
                                         </div>
 

@@ -11,18 +11,21 @@
         $precio=$_POST["precio"];
         $foto=$_POST["foto"];
 
-
-       
         $transaccion=new BaseDatos();
 
         
-        $consultaSQL="INSERT INTO usuarios(nombre,marca,descripcion,precio,foto) VALUES ('$nombre','$marca','$descripcion','$precio','$foto')";
+        $consultaSQL="INSERT INTO productos(nombre,marca,descripcion,precio,foto) VALUES ('$nombre','$marca','$descripcion','$precio','$foto')";
 
         
      
         $transaccion->agregarDatos($consultaSQL);
 
+        if($transaccion){
+            header("location:registrarProductos.php")
+        }
+
     }
+
 
 
 

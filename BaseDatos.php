@@ -103,9 +103,9 @@ public function editarDatos($consultaSQL){
  
      //4. Verificar el resultado
      if($resultado){
-         echo("se editó el registro con éxito");
+         echo("se editó el Producto");
      }else{
-         echo("Error editando el registro");
+         echo("Error editando el producto");
      }
 
 
