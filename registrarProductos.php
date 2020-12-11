@@ -21,8 +21,8 @@
         $transaccion->agregarDatos($consultaSQL);
 
         if($transaccion){
-            header("location:registrarProductos.php")
-        };
+            header("location:index.php");
+        }
 
     }
 

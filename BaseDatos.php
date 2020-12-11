@@ -11,22 +11,21 @@ public $passwordBD="";
 public function __construct(){}
 
 
-//ACCIONES/FUNCIONES/METODOS
+
 public function conectarBD(){
 
-    //1. DEFINIR EL DSN(info generica de mi BD)
-    //gestorBD:host=nombreServidor;dbname=nombreBD
+   
     $infoBD="mysql:host=localhost;dbname=jugueteria";
 
-    //2. Revisar(intentar) si hay conexión con la BD
+   
     try{
 
-        //3. UTILIZAR A PDO(crear un objeto de la clase PDO)
+       
         $conexionBD=new PDO($infoBD, $this->usuarioBD, $this->passwordBD);
         return($conexionBD);
 
     }catch(PDOException $error){
-        //3.1 Manejo del error
+        
         echo($error->getMessage());
     }
 

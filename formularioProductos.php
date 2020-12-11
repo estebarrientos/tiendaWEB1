@@ -72,7 +72,7 @@
                 <div class="col">
                     <label class="font-weight-bold">Foto:</label>
                     <input type="text" class="form-control" placeholder="Foto URL" name="foto">
-                    <button type="submit" class="btn btn-info btn-block mt-4" name="botonEnvio">Registrar</button>
+                    <button type="submit" class="btn btn-success btn-block mt-4" name="botonEnvio">Registrar</button>
                 </div>
             </div>
             
