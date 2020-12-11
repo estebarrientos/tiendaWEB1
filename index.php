@@ -117,7 +117,7 @@
 
                             </div>
                             <a href="eliminarProductos.php?id=<?= ($producto["id_producto"])?>"
-                                class="btn btn-warning">Eliminar</a>
+                                class="btn btn-secondary">Eliminar</a>
                             <button type="button" class="btn btn-success" data-bs-toggle="modal"
                                 data-bs-target="#editar<?php echo($producto["id_producto"])?>">
                                 Editar
